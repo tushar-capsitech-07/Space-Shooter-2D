@@ -4,6 +4,7 @@ public class Background : MonoBehaviour
 {
     private Vector3 startPos;
     private float repeatWidth;
+    public float scrollSpeed = 2f; 
 
 
     void Start()
@@ -12,7 +13,6 @@ public class Background : MonoBehaviour
         repeatWidth = GetComponent<BoxCollider2D>().size.y / 2;
     }
 
-    public float scrollSpeed = 2f; 
 
     void Update()
     {

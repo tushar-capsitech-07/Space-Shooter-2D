@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            FireBullet();
+            BurstFire(); // Fires 3 bullets at once
         }
     }
 
@@ -66,6 +66,13 @@ public class PlayerController : MonoBehaviour
         Destroy(bullet, 2f);
     }
 
+    public void BurstFire()
+    {
+        Instantiate(playerBulletPrefab, transform.position + new Vector3(-0.3f, 0.5f, 0f), Quaternion.identity);
+        Instantiate(playerBulletPrefab, transform.position + new Vector3(0f, 0.5f, 0f), Quaternion.identity);
+        Instantiate(playerBulletPrefab, transform.position + new Vector3(0.3f, 0.5f, 0f), Quaternion.identity);
+    }
+
     public void TakeDamage(float damage)
     {
         playerHealth -= damage;
@@ -75,14 +82,14 @@ public class PlayerController : MonoBehaviour
 
         if (playerHealth <= 0)
         {
-            Destroy(gameObject);
+            PanelManager.Instance.ShowGameOverPanel();
+            Destroy(gameObject, 2f);
         }
     }
 
     private void UpdateHealthUI()
     {
         playerHealthText.text = "Health: " + playerHealth;
-
         Debug.Log("Player Health: " + playerHealth);
     }
 }

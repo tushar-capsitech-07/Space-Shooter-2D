@@ -1,17 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
+
 using UnityEngine.SceneManagement;
-
 public class PanelManager : MonoBehaviour
-{
-    public static PanelManager Instance;
 
+{
+
+    public static PanelManager Instance; // Single-tone
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject gamePanel;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject gameOver;
 
-    public gameState currentState = gameState.notRunning;
-    public bool isRunning => currentState == gameState.running;
+    private GameState currentState = GameState.notRunning;
+    public bool isRunning => currentState == GameState.pause;
+
 
     private void Awake()
     {
@@ -20,38 +22,40 @@ public class PanelManager : MonoBehaviour
 
     void Start()
     {
-        showStart();
-        currentState = gameState.notRunning;
+        ShowStartPanel();
+        currentState = GameState.notRunning;
     }
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (currentState == gameState.pause)
-                resume();
+            if (currentState == GameState.pause)
+                Resume();
             else
-                paus();
+                Pause();
         }
     }
 
-    public void paus()
+    public void Pause()
     {
         Time.timeScale = 0f;
-        currentState = gameState.pause;
-        showPause();
+        currentState = GameState.pause;
+        ShowPausePanel();
     }
 
-    public void resume()
+
+    public void Resume()
     {
         Time.timeScale = 1f;
-        currentState = gameState.running;
-        showGame();
+        currentState = GameState.running;
+        ShowGamePanel();
     }
 
-    public void play()
+    public void Play()
     {
-          Time.timeScale = 0f;
+        Time.timeScale = 1f;
     }
 
     public void RestartGame()
@@ -63,39 +67,48 @@ public class PanelManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit Game called!");
+#if UNITY_EDITOR
 
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-    #else
-                    Application.Quit();
-    #endif
+        UnityEditor.EditorApplication.isPlaying = false;
+
+#else
+ 
+                            Application.Quit();
+ 
+#endif
+
     }
 
-    public void showStart()
+    public void ShowStartPanel()
     {
-
+        Time.timeScale = 0f;
         startPanel.SetActive(true);
         gamePanel.SetActive(false);
         pausePanel.SetActive(false);
+        gameOver.SetActive(false);
     }
 
-    public void showPause()
+    public void ShowPausePanel()
     {
         startPanel.SetActive(false);
         gamePanel.SetActive(false);
         pausePanel.SetActive(true);
+        gameOver.SetActive(false);
     }
 
-    public void showGame()
+    public void ShowGamePanel()
     {
-        currentState = gameState.notRunning;
-
+        Time.timeScale = 1f;
+        currentState = GameState.running;
         gamePanel.SetActive(true);
         pausePanel.SetActive(false);
         startPanel.SetActive(false);
+        gameOver.SetActive(false);
     }
-    public void showGameOver()
+
+    public void ShowGameOverPanel()
     {
+        Debug.Log("hello");
         gameOver.SetActive(true);
         gamePanel.SetActive(false);
         pausePanel.SetActive(false);
@@ -107,10 +120,11 @@ public class PanelManager : MonoBehaviour
         Debug.Log("Application quitting...");
     }
 
-    public enum gameState
+    public enum GameState
     {
         notRunning,
         running,
         pause
     }
+
 }

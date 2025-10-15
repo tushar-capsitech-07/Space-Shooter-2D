@@ -20,18 +20,16 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            PanelManager.Instance.ShowGameOverPanel();
             Destroy(collision.gameObject);
+
             Destroy(gameObject);
         }
     }
-
     void FireBullet()
     {
         Vector3 spawnPos = transform.position + new Vector3(0, -1f, 0);
