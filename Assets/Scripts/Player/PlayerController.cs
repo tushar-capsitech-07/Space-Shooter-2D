@@ -4,21 +4,23 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private float horizontalInput;
     private float verticalInput;
+    private float horizontalInput;
 
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private GameObject playerBulletPrefab;
-    [SerializeField] private TextMeshProUGUI playerHealthText;
-    [SerializeField] private Image playerHealthUI;
-
-    public float playerHealth = 100f;
     public float maxHealth = 100f;
+    public float playerHealth = 100f;
 
     private Camera mainCamera;
-    private Vector2 screenBounds;
     private float objectWidth;
     private float objectHeight;
+    private Vector2 screenBounds;
+
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private Image playerHealthUI;
+    [SerializeField] private GameObject playerBulletPrefab;
+    [SerializeField] private TextMeshProUGUI playerHealthText;
+
+   
 
     void Start()
     {
@@ -44,7 +46,6 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         MovePlayer();
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             BurstFire();
@@ -92,11 +93,14 @@ public class PlayerController : MonoBehaviour
     private void UpdateHealthUI()
     {
         if (playerHealthText != null)
+        {
             playerHealthText.text = "Health: " + playerHealth;
+        }
 
         if (playerHealthUI != null)
+        {
             playerHealthUI.fillAmount = playerHealth / maxHealth;
-
+        }
     }
 
     void HealPlayer()

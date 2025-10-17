@@ -315,10 +315,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af50dcc16cacccd4e8c6bec7989e27e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPanel: {fileID: 538868581}
-  gamePanel: {fileID: 1550054139}
-  pausePanel: {fileID: 2071236085}
   gameOver: {fileID: 91201065}
+  gamePanel: {fileID: 1550054139}
+  startPanel: {fileID: 538868581}
+  pausePanel: {fileID: 2071236085}
 --- !u!1 &103191335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,8 +3016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b1ecd50198b5e478e32b40ae468d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1352925603935780381, guid: 018d80a775931874ba4b09cbe8253ed6, type: 3}
   spawnRate: 2
+  bossSpawnRate: 30
+  enemyPrefab: {fileID: 1352925603935780381, guid: 018d80a775931874ba4b09cbe8253ed6, type: 3}
+  bossEnemyPrefab: {fileID: 5979800921784178364, guid: 3126389de288462458d8651fd5641dd5, type: 3}
 --- !u!4 &824874950
 Transform:
   m_ObjectHideFlags: 0
@@ -5208,12 +5210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff65f87d0c33f2f40b93b3c9978262fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+  playerHealth: 100
   speed: 2
+  playerHealthUI: {fileID: 1349391165}
   playerBulletPrefab: {fileID: 338088347286673425, guid: 7d628a0f5d0e93744bf98f2c088b958d, type: 3}
   playerHealthText: {fileID: 103191337}
-  playerHealthUI: {fileID: 1349391165}
-  playerHealth: 100
-  maxHealth: 100
 --- !u!50 &1906301932
 Rigidbody2D:
   serializedVersion: 5

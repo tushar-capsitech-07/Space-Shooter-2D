@@ -6,10 +6,10 @@ public class PanelManager : MonoBehaviour
     public static PanelManager Instance;
     public static bool isRestarting = false;
 
-    [SerializeField] private GameObject startPanel;
-    [SerializeField] private GameObject gamePanel;
-    [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject pausePanel;
 
     private GameState currentState = GameState.notRunning;
     public bool IsPaused => currentState == GameState.pause;
@@ -82,11 +82,12 @@ public class PanelManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quit Game called!");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 
     public void ShowStartPanel()
@@ -135,4 +136,4 @@ public class PanelManager : MonoBehaviour
         running,
         pause
     }
-}
+}                                                           
