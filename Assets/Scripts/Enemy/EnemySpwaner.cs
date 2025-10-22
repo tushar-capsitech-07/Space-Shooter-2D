@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     private float xMin, xMax, ySpawn;
 
     [SerializeField] private float spawnRate = 0.5f;
-    [SerializeField] private float bossSpawnRate = 30f;
+    [SerializeField] private float bossSpawnRate = 20f;
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject bossEnemyPrefab;
@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating(nameof(SpawnBossEnemy), bossSpawnRate, bossSpawnRate);
     }
 
-    void SpawnEnemy()
+    void SpawnEnemy()   
     {
         Spawn(enemyPrefab);
     }
@@ -41,3 +41,6 @@ public class EnemySpawner : MonoBehaviour
         Instantiate(prefab, spawnPos, Quaternion.identity);
     }
 }
+
+
+    

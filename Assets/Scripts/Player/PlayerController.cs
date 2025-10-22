@@ -4,16 +4,17 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    private Camera mainCamera;
+    private float objectWidth;
+    private float objectHeight;
+    private Vector2 screenBounds;
+
     private float verticalInput;
     private float horizontalInput;
 
     public float maxHealth = 100f;
     public float playerHealth = 100f;
 
-    private Camera mainCamera;
-    private float objectWidth;
-    private float objectHeight;
-    private Vector2 screenBounds;
 
     [SerializeField] private float speed = 2f;
     [SerializeField] private Image playerHealthUI;

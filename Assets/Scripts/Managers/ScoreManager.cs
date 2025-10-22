@@ -5,11 +5,12 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
+    private int score = 0;
+    private int highScore = 0;
+
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI highScoreText;
 
-    private int score = 0;
-    private int highScore = 0;
 
     private void Awake()
     {
@@ -26,6 +27,14 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Score: " + score);
     }
 
+    public void BossAddScore()
+    {
+        score += 10;
+        UpdateHighScore();
+        UpdateScoreUI();
+        Debug.Log("Score: " + score);
+    }
+
     public void DecreaseScore()
     {
         if (score > 0)
@@ -36,7 +45,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void UpdateHighScore() 
+    private void UpdateHighScore()
     {
         if (score > highScore)
         {

@@ -81,7 +81,6 @@ public class PanelManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit Game called!");
 
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -125,10 +124,7 @@ public class PanelManager : MonoBehaviour
         startPanel.SetActive(false);
     }
 
-    private void OnApplicationQuit()
-    {
-        Debug.Log("Application quitting...");
-    }
+   
 
     public enum GameState
     {

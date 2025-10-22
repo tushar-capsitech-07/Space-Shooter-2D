@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossEbemy : MonoBehaviour
 {
     [SerializeField] private float speed = 0.1f;
-    [SerializeField] private float spawnRate = 10f;
+    [SerializeField] private float spawnRate = 0.5f;
     [SerializeField] private float bossHealth = 100f;
     [SerializeField] private float damagePerBullet = 10f; 
 
@@ -12,7 +12,7 @@ public class BossEbemy : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating(nameof(FireBullet), spawnRate, spawnRate);
+        InvokeRepeating(nameof(BossFireBullet), spawnRate, spawnRate);
     }
 
     void Update()
@@ -25,6 +25,7 @@ public class BossEbemy : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -33,6 +34,7 @@ public class BossEbemy : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
+
         else if (collision.CompareTag("PlayerBullet"))
         {
             Destroy(collision.gameObject);
@@ -46,12 +48,15 @@ public class BossEbemy : MonoBehaviour
 
                 ScoreManager.Instance.AddScore();
                 Destroy(gameObject);
+
+                ScoreManager.Instance.BossAddScore();
             }
         }
     }
 
-    void FireBullet()
+    void BossFireBullet()
     {
+        Debug.Log("fire");
         Vector3 spawnPos = transform.position + new Vector3(0, -1f, 0);
         GameObject bullet = Instantiate(enemyBulletPrefab, spawnPos, Quaternion.identity);
         Destroy(bullet, 2f);

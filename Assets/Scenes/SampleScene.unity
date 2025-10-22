@@ -1262,7 +1262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &538868582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   spawnRate: 2
   bossSpawnRate: 30
   enemyPrefab: {fileID: 1352925603935780381, guid: 018d80a775931874ba4b09cbe8253ed6, type: 3}
-  bossEnemyPrefab: {fileID: 5979800921784178364, guid: 3126389de288462458d8651fd5641dd5, type: 3}
+  bossEnemyPrefab: {fileID: 1783829143691929600, guid: cf0e95e6df4dd134b95141d6a06605c5, type: 3}
 --- !u!4 &824874950
 Transform:
   m_ObjectHideFlags: 0
@@ -3029,7 +3029,7 @@ Transform:
   m_GameObject: {fileID: 824874948}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.810071, y: 5.53, z: -0.12424844}
+  m_LocalPosition: {x: 0, y: 5.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4643,7 +4643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1550054140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5094,9 +5094,9 @@ RectTransform:
   - {fileID: 602132350}
   m_Father: {fileID: 538868582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 870}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898429523
