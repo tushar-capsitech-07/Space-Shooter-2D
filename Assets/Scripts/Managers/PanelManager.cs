@@ -82,49 +82,42 @@ public class PanelManager : MonoBehaviour
     public void QuitGame()
     {
 
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
     public void ShowStartPanel()
     {
         Time.timeScale = 0f;
-        startPanel.SetActive(true);
-        gamePanel.SetActive(false);
-        pausePanel.SetActive(false);
-        gameOver.SetActive(false);
+        PanelHandle(false, false, true, false);
     }
 
     public void ShowPausePanel()
     {
-        startPanel.SetActive(false);
-        gamePanel.SetActive(false);
-        pausePanel.SetActive(true);
-        gameOver.SetActive(false);
+        PanelHandle(false, false, false, true);
     }
 
     public void ShowGamePanel()
     {
         Time.timeScale = 1f;
-        gamePanel.SetActive(true);
-        pausePanel.SetActive(false);
-        startPanel.SetActive(false);
-        gameOver.SetActive(false);
+        PanelHandle(false, true, false, false);
     }
 
     public void ShowGameOverPanel()
     {
-        Debug.Log("Game Over triggered");
-        gameOver.SetActive(true);
-        gamePanel.SetActive(false);
-        pausePanel.SetActive(false);
-        startPanel.SetActive(false);
+        PanelHandle(true, false, false, false);
     }
 
-   
+    private void PanelHandle(bool isGameOver, bool isGamePanel, bool isStartPanel, bool isPausePanel)
+    {
+        gameOver.SetActive(isGameOver);
+        gamePanel.SetActive(isGamePanel);
+        startPanel.SetActive(isStartPanel);
+        pausePanel.SetActive(isPausePanel);
+    }
 
     public enum GameState
     {
@@ -132,4 +125,4 @@ public class PanelManager : MonoBehaviour
         running,
         pause
     }
-}                                                           
+}

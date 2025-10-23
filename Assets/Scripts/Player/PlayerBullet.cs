@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private float bulletPos;
-    [SerializeField]  public float speed = 10f;
+    [SerializeField] private float speed = 10f;
 
         
     void Update()

@@ -1,14 +1,15 @@
 using UnityEngine;
 
-public class BossEbemy : MonoBehaviour
+public class BossEnemy : MonoBehaviour
 {
+
+    [SerializeField] private ParticleSystem EnemyExpla;
+    [SerializeField] private GameObject enemyBulletPrefab;
+
     [SerializeField] private float speed = 0.1f;
     [SerializeField] private float spawnRate = 0.5f;
     [SerializeField] private float bossHealth = 100f;
     [SerializeField] private float damagePerBullet = 10f; 
-
-    [SerializeField] private ParticleSystem EnemyExpla;
-    [SerializeField] private GameObject enemyBulletPrefab;
 
     void Start()
     {

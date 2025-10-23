@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class BossenemyBullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public float damage = 10f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float damage = 10f;
 
     void Update()
     {

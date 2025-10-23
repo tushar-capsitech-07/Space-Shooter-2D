@@ -4,7 +4,7 @@ public class Background : MonoBehaviour
 {
     private Vector3 startPos;
     private float repeatWidth;
-    public float scrollSpeed = 2f; 
+    [SerializeField] private float scrollSpeed = 2f; 
 
 
     void Start()

@@ -5,11 +5,12 @@ public class EnemySpawner : MonoBehaviour
     private Camera mainCamera;
     private float xMin, xMax, ySpawn;
 
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject bossEnemyPrefab;
+
     [SerializeField] private float spawnRate = 0.5f;
     [SerializeField] private float bossSpawnRate = 20f;
 
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject bossEnemyPrefab;
 
     void Start()
     {
