@@ -45,9 +45,13 @@ public class PanelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (currentState == GameState.pause)
+            {
                 Resume();
+            }
             else if (currentState == GameState.running)
+            {
                 Pause();
+            }
         }
     }
 
